@@ -1,8 +1,19 @@
 import sys
 
+max_total_diff = 0
+
 def get_permutations(current_combination, remaining_items, target_count, results):
+
     if len(current_combination) == target_count:
-        results.append(list(current_combination))
+        current_diff_sum = 0
+
+        for i in range(len(current_combination) - 1):
+            current_diff_sum += abs(current_combination[i] - current_combination[i+1])
+
+        global max_total_diff
+        if current_diff_sum > max_total_diff:
+            max_total_diff = current_diff_sum
+            
         return
 
     for i in range(len(remaining_items)):
@@ -16,25 +27,13 @@ def get_permutations(current_combination, remaining_items, target_count, results
             target_count,
             results
         )
-        
+
         current_combination.pop()
 
 
 target_count = int(sys.stdin.readline())
 numbers = list(map(int, sys.stdin.readline().split()))
 
-all_permutations = []
-get_permutations([], numbers, target_count, all_permutations)
-
-max_total_diff = 0
-
-for perm in all_permutations:
-    current_diff_sum = 0
-
-    for i in range(len(perm) - 1):
-        current_diff_sum += abs(perm[i] - perm[i+1])
-        
-    if current_diff_sum > max_total_diff:
-        max_total_diff = current_diff_sum
+get_permutations([], numbers, target_count, [])
 
 print(max_total_diff)
