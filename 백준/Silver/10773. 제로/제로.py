@@ -5,7 +5,7 @@ lst = [0] * 100_000
 count = int(sys.stdin.readline())
 ptr = 0
 
-for idx in range(count):
+for _ in range(count):
     number = int(sys.stdin.readline())
 
     if number == 0:
