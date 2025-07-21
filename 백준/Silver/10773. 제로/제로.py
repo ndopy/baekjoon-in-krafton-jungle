@@ -1,11 +1,11 @@
 import sys
 
-lst = [0] * 100_000
-
 count = int(sys.stdin.readline())
+
+lst = [0] * count
 ptr = 0
 
-for _ in range(count):
+for idx in range(count):
     number = int(sys.stdin.readline())
 
     if number == 0:
