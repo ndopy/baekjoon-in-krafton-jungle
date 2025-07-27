@@ -36,16 +36,14 @@ for _ in range(edge_count):
     graph.add_edge(source_vertex, target_vertex)
 
 visited_set = set()
+connection_count = 0
 
-for i in range(1, vertex_count + 1):
-    # 각 정점마다 BFS 해서 방문 결과를 얻고,
-    # 그것을 오름차순으로 정렬하여 set 에 넣어서 중복 값을 제거한다.
-    # -> 중복이 제거되고 남은 set 안의 아이템 개수가 곧 연결 요소의 개수이다.
-    result = graph.bfs(i)
-    result = list(result)
-    result.sort()
+for vertex in range(1, vertex_count + 1):
+    if vertex in visited_set:
+        continue
 
-    sorted_tuple = tuple(result)
-    visited_set.add(sorted_tuple)
+    bfs_result = graph.bfs(vertex)
+    visited_set.update(bfs_result)
+    connection_count += 1
 
-print(len(visited_set))
+print(connection_count)
