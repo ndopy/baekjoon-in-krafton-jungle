@@ -17,16 +17,16 @@ for _ in range(test_case_count):
     # 기준이 될 면접 점수 : 이 점수보다 낮아야 선발될 수 있다. -> 무한대로 초기화
     minimum_interview_score = float('Inf')
 
-    # 선발 인원을 저장할 리스트
-    selected_applicants = []
+    # 선발 인원을 카운트할 변수
+    selected_applicants_count = 0
 
     for idx in range(applicant_count):
         document_score, interview_score = applicants[idx]
 
         if interview_score <= minimum_interview_score:
-            selected_applicants.append(applicants[idx])
+            selected_applicants_count += 1
 
             # 기준이 될 면접 점수를 업데이트 한다.
             minimum_interview_score = interview_score
 
-    print(len(selected_applicants))
+    print(selected_applicants_count)
