@@ -13,4 +13,4 @@ for i in range(L):
     num = alphabet_to_num(chars[i])
     H += num * pow(31, i)
 
-print(H)
+print(H % 1234567891)
