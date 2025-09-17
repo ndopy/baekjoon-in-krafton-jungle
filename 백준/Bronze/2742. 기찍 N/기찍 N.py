@@ -1,5 +1,9 @@
 import sys
 N = int(sys.stdin.readline())
 
-for i in range(N, 0, -1):
-    print(i)
+numbers = []
+
+for number in range(N, 0, -1):
+    numbers.append(str(number))
+
+print("\n".join(numbers))
