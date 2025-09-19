@@ -12,20 +12,14 @@ alphabet_stroke = {
 }
 
 sum = 0
-numbers = deque()
 
 for char in S:
-    numbers.append(alphabet_stroke[char])
+    sum += alphabet_stroke[char]
 
-while (numbers):
-    if len(numbers) >= 2:
-        num1 = numbers.popleft()
-        num2 = numbers.popleft()
-        sum = (sum + (num1 + num2)) % 10
-    else:
-        sum = (sum + numbers.popleft()) % 10
+sum = sum % 10
+is_odd = sum % 2
 
-if sum % 2:
+if is_odd:
     print(f"I'm a winner!")
 else:
     print(f"You're the winner?")
