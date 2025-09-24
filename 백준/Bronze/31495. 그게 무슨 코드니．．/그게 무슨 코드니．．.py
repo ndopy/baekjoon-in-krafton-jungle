@@ -2,10 +2,7 @@ import sys
 
 S = sys.stdin.readline().strip()
 
-if S[0] == '"' and S[-1] == '"':
-    if S[1:-1] == '':
-        print('CE')
-    else:
-        print(S[1:-1])
+if S.startswith('"') and S.endswith('"') and len(S) > 2:
+    print(S[1:-1])
 else:
     print('CE')
